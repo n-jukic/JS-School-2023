@@ -1,4 +1,4 @@
-// Write a function that takes array of any number of cards (poker cards, 52 unique cards) and returns the number of complete decks we can make using those cards.
+//Write a function that takes array of any number of cards (poker cards, 52 unique cards) and returns the number of complete decks we can make using those cards.
 
 
 //returns number of complete decks that can be created with given cards
