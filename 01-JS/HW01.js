@@ -1,8 +1,8 @@
 // Write a function that takes array of any number of cards (poker cards, 52 unique cards) and returns the number of complete decks we can make using those cards.
 
 
-//returns number of complete decks that can be created with given cards
-//if there is 52 different keys, find card with least number of occurences
+// returns number of complete decks that can be created with given cards
+// if there is 52 different keys, find card with least number of occurences
 function GetDeckAmt(cardOccurences){
     if(Object.keys(cardOccurences).length !== 52){
         return 'Cannot make a complete deck of cards.'
