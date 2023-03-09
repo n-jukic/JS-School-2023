@@ -15,13 +15,13 @@ function GetDeckAmt(cardOccurences){
     } 
 }
 
-//counts occurences of every existing card
+//counts occurences of every existing card and stores them in an object (eg. {H1: 3, H2: 6, ..., D13: 2})
 function CountCardOccurences(cards){
     var occurences = {};
 
     for(let i = 0; i < cards.length; i++){
         let card = cards[i];
-        let index = card.suit + card.number;    //create unique property for card (eg. {suit: H, number: 7} -> 'H7')
+        let index = card.suit + card.value;    //create unique property for card (eg. {suit: H, value: 7} -> 'H7')
         if(occurences[index]){
             occurences[index]++;
         }else{
@@ -33,14 +33,15 @@ function CountCardOccurences(cards){
 }
 
     
-//defining suits of cards (hearts, spades, clubs, diamonds)
+//defining suits of cards (hearts, spades, clubs, diamonds) and card names
 const suits = ['H', 'S', 'C', 'D'];
+const cardNames = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 const cards = [];
 
 //for each suit (H, S, C, D) and value pair (1-13) adds a card object between 0 and 100 times
 suits.forEach((suit) => {
     for(let i = 1; i < 14; i++){
-        const card = {'suit': suit, number: i};     
+        const card = {'suit': suit, value: i, 'name': cardNames[i-1]};     
 
         let num = Math.floor(Math.random() * 101);
         for(let j = 0; j < num; j++){
