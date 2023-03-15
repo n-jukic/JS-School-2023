@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://jsschool2023:pixion123@cluster0.jkwcbrz.mongodb.net/njukic?retryWrites=true&w=majority');
+mongoose.connect('mongodb+srv://jsschool2023:<password>@cluster0.jkwcbrz.mongodb.net/[db_name]?retryWrites=true&w=majority');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
