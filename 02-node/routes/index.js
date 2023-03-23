@@ -29,10 +29,11 @@ router.get('/', function(req, res, next) {
 //doesn't allow adding new Robot instance without a name property
 router.post('/robot/new', async function(req, res){
   let newRobot;
-  if(req.body.name){
-    newRobot = new Robot({name: req.body.name});
-  }else{
+  if(!req.body.name){
     res.status(400).send("Missing body params.");
+    return;
+  }else{
+    newRobot = new Robot({name: req.body.name});
   }
 
   let nr;
@@ -42,6 +43,8 @@ router.post('/robot/new', async function(req, res){
     }
   } catch (error) {
     console.log(error);
+    res.status(500).send("Internal server error.")
+    return;
   }
   res.json(nr);
 });
@@ -50,14 +53,17 @@ router.post('/robot/new', async function(req, res){
 router.get('/robot/name', async function(req, res){
   let robots;
   try {
-    if(req.query.name){
+    if(!req.query.name){
+      res.status(400).send("Missing params.");
+      return;
+    }else{
       const {name} = req.query;
       robots = await Robot.find({name: {$regex: name, $options: 'i'}});
-    }else{
-      res.sendStatus(404);
     } 
   } catch (error) {
     console.log(error);
+    res.status(500).send("Internal server error.")
+    return;
   }
   res.json(robots);
 });
